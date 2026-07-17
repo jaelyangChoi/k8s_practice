@@ -8,10 +8,10 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # 워크플로우를 실행하는 물리적 또는 가상의 서버
     steps:
       - name: checkout github
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2 # 누군가가 만들어놓은 명령어집합. 프로그램
       
       - name: install kubectl
         uses: azure/setup-kubectl@v3
@@ -27,7 +27,7 @@ jobs:
           aws-region: ap-northeast-2
 
       - name: update cluster infomation
-        run: aws eks update-kubeconfig --name  my-cluster --region ap-northeast-2
+        run: aws eks update-kubeconfig --name  my-cluster --region ap-northeast-2 # 내가 만든 명령어
 
       - name: Login to ECR
         id: login-ecr
