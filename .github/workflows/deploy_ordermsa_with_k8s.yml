@@ -35,7 +35,7 @@ jobs:
 
       - name: gateway build and push docker image to ecr
         env:
-          REGISTRY: 346903264902.dkr.ecr.ap-northeast-2.amazonaws.com
+          REGISTRY: 658892138120.dkr.ecr.ap-northeast-2.amazonaws.com
           REPOSITORY: apigateway
           IMAGE_TAG: latest
         run: |
@@ -47,11 +47,11 @@ jobs:
       - name: eks kubectl apply
         run: |
           kubectl apply -f ./3.msa/apigateway/k8s/depl_svc.yml
-          kubectl rollout restart deployment apigateway-depl -n bradkim
+          kubectl rollout restart deployment apigateway-depl -n jaeryang
         
       - name: member build and push docker image to ecr
         env:
-          REGISTRY: 346903264902.dkr.ecr.ap-northeast-2.amazonaws.com
+          REGISTRY: 658892138120.dkr.ecr.ap-northeast-2.amazonaws.com
           REPOSITORY: member-service
           IMAGE_TAG: latest
         run: |
@@ -63,11 +63,11 @@ jobs:
       - name: eks kubectl apply
         run: |
           kubectl apply -f ./3.msa/member/k8s/depl_svc.yml
-          kubectl rollout restart deployment member-depl -n bradkim
+          kubectl rollout restart deployment member-depl -n jaeryang
 
       - name: order build and push docker image to ecr
         env:
-          REGISTRY: 346903264902.dkr.ecr.ap-northeast-2.amazonaws.com
+          REGISTRY: 658892138120.dkr.ecr.ap-northeast-2.amazonaws.com
           REPOSITORY: ordering-service
           IMAGE_TAG: latest
         run: |
@@ -79,11 +79,11 @@ jobs:
       - name: eks kubectl apply
         run: |
           kubectl apply -f ./3.msa/ordering/k8s/depl_svc.yml
-          kubectl rollout restart deployment ordering-depl -n bradkim
+          kubectl rollout restart deployment ordering-depl -n jaeryang
           
       - name: product build and push docker image to ecr
         env:
-          REGISTRY: 346903264902.dkr.ecr.ap-northeast-2.amazonaws.com
+          REGISTRY: 658892138120.dkr.ecr.ap-northeast-2.amazonaws.com
           REPOSITORY: product-service
           IMAGE_TAG: latest
         run: |
@@ -95,4 +95,4 @@ jobs:
       - name: eks kubectl apply
         run: |
           kubectl apply -f ./3.msa/product/k8s/depl_svc.yml
-          kubectl rollout restart deployment product-depl -n bradkim
+          kubectl rollout restart deployment product-depl -n jaeryang
