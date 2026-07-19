@@ -12,7 +12,7 @@ RUN chmod +x gradlew
 RUN ./gradlew bootJar
 
 # 두번째 스테이지
-FROM eclipse-temurin:17-jdk
+FROM eclipse-temurin:17-jre
 WORKDIR /app
 COPY --from=stage1 /app/build/libs/*.jar app.jar
 
